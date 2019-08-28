@@ -6,12 +6,26 @@ const Router = require('koa-router')
 const router = new Router()
 const _static = require('koa-static') // 加载静态资源 localhost:3009/images/men.png
 const bodyParser = require('koa-bodyparser')  // 获取post请求参数
+const views = require('koa-views')
+const koaBody = require('koa-body')
 
 app.use(bodyParser())
 
 app.use(_static(
   path.join(__dirname, './static')
 ))
+
+// 模板引擎要放在ctx.render之前(bug: ctx.render is not a function)
+app.use(views(path.join(__dirname, './views'), {
+  extension: 'ejs'
+}))
+
+app.use(koaBody({
+  multipart: true,
+  formidable: {
+    maxFileSize: 200 * 1024 * 1024 // 设置上传文件大小限制  默认最大2M
+  }
+}))
 
 app.use(async (ctx, next) => {
   if (ctx.request.path === '/') {
@@ -22,6 +36,9 @@ app.use(async (ctx, next) => {
         <li><a href="/page/helloworld">/page/helloworld</a></li>
         <li><a href="/get?id=1&name=zhangsan">/get</a></li>
         <li><a href="/post">/post</a></li>
+        <li><a href='/cookie'>/cookie</a></li>
+        <li><a href='/view'>/view</a></li>
+        <li><a href='/upload'>/upload</a></li>
       </ul>
     `
   }
@@ -53,5 +70,5 @@ app.use(async (ctx, next) => {
 })
 
 app.listen(3009, () => {
-  console.log('starting ar port 3009')
+  console.log('Server starts at http://127.0.0.1:3009/')
 })
