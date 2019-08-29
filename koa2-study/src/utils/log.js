@@ -1,5 +1,4 @@
 const log4js = require('log4js')
-const data = new Date()
 
 log4js.configure({
   appenders: {

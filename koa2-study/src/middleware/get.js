@@ -10,7 +10,7 @@ get.get('/', async (ctx, next) => {
     query,
     querystring,
     req_query,
-    req_querystring
+    req_querystring,
   }
   await next()
 })
