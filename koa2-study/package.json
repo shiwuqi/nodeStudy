@@ -4,7 +4,7 @@
   "description": "koa2学习",
   "main": "index.js",
   "scripts": {
-    "start": "supervisor src/index.js"
+    "start": "nodemon src/index.js"
   },
   "author": " <liziw2012@163.com>",
   "license": "ISC",
