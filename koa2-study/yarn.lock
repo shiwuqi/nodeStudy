@@ -866,6 +866,13 @@ iconv-lite@0.4.24, iconv-lite@^0.4.4:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
+iconv-lite@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.5.0.tgz#59cdde0a2a297cc2aeb0c6445a195ee89f127550"
+  integrity sha1-Wc3eCiopfMKusMZEWhle6J8SdVA=
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3"
+
 ignore-by-default@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/ignore-by-default/download/ignore-by-default-1.0.1.tgz#48ca6d72f6c6a3af00a9ad4ae6876be3889e2b09"
