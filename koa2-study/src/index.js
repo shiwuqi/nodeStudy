@@ -39,6 +39,16 @@ app.use(async (ctx, next) => {
         <li><a href='/cookie'>/cookie</a></li>
         <li><a href='/view'>/view</a></li>
         <li><a href='/upload'>/upload</a></li>
+        <li><a href='/curd'>/crud</a></li>
+        <li><a href='/epath'>/epath</a></li>
+        <li><a href='/querystring'>/querystring</a></li>
+        <li><a href='/querystring/stringify'>/querystring/stringify</a></li>
+        <li><a href='/efs'>/efs</a></li>
+        <li><a href='/efs/async'>/efs/async</a></li>
+        <li><a href='/efs/readdir'>/efs/readdir</a></li>
+        <li><a href='/efs/readdirSync'>/efs/readdirSync</a></li>
+        <li><a href='/efs/unlink'>/efs/unlink</a></li>
+        <li><a href='/efs/unlinkSync'>/efs/unlinkSync</a></li>
       </ul>
     `
   }

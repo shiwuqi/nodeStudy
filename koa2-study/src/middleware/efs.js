@@ -91,7 +91,7 @@ function readdirFolder(folderFile) {
 // 异步读取目录内容
 efs.get('/readdir', async (ctx, next) => {
   try {
-    const result = await readdirFolder(path.join(__dirname, '../static/syncfiles'))
+    const result = await readdirFolder(path.join(__dirname, '../static/asyncfiles'))
     ctx.response.body = result
   } catch (e) {
     ctx.response.body = e
@@ -102,6 +102,35 @@ efs.get('/readdir', async (ctx, next) => {
 efs.get('/readdirSync', async (ctx, next) => {
   const result = fs.readdirSync(path.join(__dirname, '../static/syncfiles'))
   ctx.response.body = result
+})
+
+function unlinkFile(filePath) {
+  return new Promise((resolve, reject) => {
+    fs.unlink(filePath, function(err) {
+      if (err) reject(err)
+      resolve(true)
+    })
+  })
+}
+
+// 异步删除文件
+efs.get('/unlink', async (ctx, next) => {
+  try {
+    await unlinkFile(path.join(__dirname, '../static/asyncfiles/test.txt'))
+    ctx.response.body = '删除成功'
+  } catch (e) {
+    ctx.response.body = '删除失败'
+  }
+})
+
+// 同步删除文件
+efs.get('/unlinkSync', async (ctx, next) => {
+  try {
+    fs.unlinkSync(path.join(__dirname, '../static/syncfiles/test.txt'))
+    ctx.response.body = '删除成功'
+  } catch (e) {
+    ctx.response.body = '删除失败'
+  }
 })
 
 function statFile(filePath) {
