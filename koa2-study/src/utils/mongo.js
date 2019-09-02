@@ -8,7 +8,7 @@ class ConnectMongo {
   }
   open() { // 连接数据库
     const _this = this
-    MongoClient.connect(this.url, { useUnifiedTopology: true }, function(err, db) {
+    MongoClient.connect(this.url, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, db) {
       if (err) {
         return console.dir('数据库连接失败：' + err)
       }
@@ -37,11 +37,11 @@ class ConnectMongo {
       if (err) {
         throw err
       } else {
-        result.insertOne(data, function(err, result) {
+        result.insertOne(data, function(err, data) {
           if (err) {
             console.log('插入数据失败：' + err)
           }
-          cb && cb(result)
+          cb && cb(data)
         })
       }
     })
@@ -58,11 +58,11 @@ class ConnectMongo {
       if (err) {
         throw err
       } else {
-        result.remove(data, function(err, result) {
+        result.remove(data, function(err, data) {
           if (err) {
             console.log('删除数据失败：' + err)
           }
-          cb && cb(result)
+          cb && cb(data)
         })
       }
     })
