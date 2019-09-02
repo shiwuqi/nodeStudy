@@ -29,7 +29,7 @@ app.use(koaBody({
 
 app.use(async (ctx, next) => {
   if (ctx.request.path === '/') {
-    ctx.response.status === 200
+    ctx.response.status = 200
     ctx.response.body = `
       <ul>
         <li><a href="/page">/page</a></li>
