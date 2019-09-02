@@ -17,6 +17,11 @@ crud.get('/', async (ctx, next) => {
       姓名：<input type="text" name="name" />
       <input type="submit" value="查询"/>
     </form>
+    <form action="http://localhost:3009/crud/update" method="POST" enctype="multipart/form-data">
+      更改签姓名：<input type="text" name="before" />
+      更改后姓名：<input type="text" name="after" />
+      <input type="submit" value="更改"/>
+    </form>
     <form action="http://localhost:3009/crud/remove" method="POST" enctype="multipart/form-data">
       姓名：<input type="text" name="name" />
       <input type="submit" value="删除"/>
@@ -42,6 +47,17 @@ crud.post('/find', async (ctx, next) => {
     const data = await connectMongo.find('user', ctx.request.body)
     ctx.response.status = 200
     ctx.response.body = data
+  } catch (e) {
+    ctx.response.body = e
+  }
+})
+
+crud.post('/update', async (ctx, next) => {
+  try {
+    const params = ctx.request.body
+    await connectMongo.update('user', { name: params.before }, { $set: { name: params.after } })
+    ctx.response.status = 200
+    ctx.response.body = "更改成功！"
   } catch (e) {
     ctx.response.body = e
   }

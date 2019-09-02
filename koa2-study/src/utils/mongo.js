@@ -71,6 +71,29 @@ class ConnectMongo {
   }
 
   /**
+   * @description 更新数据
+   * @param {string}table 表名
+   * @param {any}condition 查询条件
+   * @param {any}data 要更新的数据 
+   */
+  update(table, condition, data) {
+    return new Promise((resolve, reject) => {
+      this.connect(table, function(err, result) {
+        if (err) {
+          throw err
+        } else {
+          result.update(condition, data, function(err, data) {
+            if (err) {
+              reject(err)
+            }
+            resolve(data)
+          })
+        }
+      })
+    })
+  }
+
+  /**
    * @description 删除数据
    * @param {string}table 表名 
    * @param {any}data 要插入的数据
