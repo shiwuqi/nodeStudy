@@ -49,6 +49,28 @@ class ConnectMongo {
   }
 
   /**
+   * @description 查询单个数据
+   * @param {string}table 表名 
+   * @param {any}data 要查询的数据 
+   */
+  find(table, data) {
+    return new Promise((resolve, reject) => {
+      this.connect(table, function(err, result) {
+        if (err) {
+          throw err
+        } else {
+          result.find(data).toArray(function(err, data) {
+            if (err) {
+              reject(err)
+            }
+            resolve(data)
+          })
+        }
+      })
+    })
+  }
+
+  /**
    * @description 删除数据
    * @param {string}table 表名 
    * @param {any}data 要插入的数据
