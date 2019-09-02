@@ -22,9 +22,13 @@ crud.get('/', async (ctx, next) => {
       更改后姓名：<input type="text" name="after" />
       <input type="submit" value="更改"/>
     </form>
-    <form action="http://localhost:3009/crud/remove" method="POST" enctype="multipart/form-data">
+    <form action="http://localhost:3009/crud/deleteone" method="POST" enctype="multipart/form-data">
       姓名：<input type="text" name="name" />
-      <input type="submit" value="删除"/>
+      <input type="submit" value="删除单个数据"/>
+    </form>
+    <form action="http://localhost:3009/crud/deletemany" method="POST" enctype="multipart/form-data">
+      姓名：<input type="text" name="name" />
+      <input type="submit" value="删除多个数据"/>
     </form>
   `
   ctx.response.status = 200
@@ -55,7 +59,7 @@ crud.post('/find', async (ctx, next) => {
 crud.post('/update', async (ctx, next) => {
   try {
     const params = ctx.request.body
-    await connectMongo.update('user', { name: params.before }, { $set: { name: params.after } })
+    await connectMongo.update('user', { name: params.before }, { $set: { name: params.after } }, true)
     ctx.response.status = 200
     ctx.response.body = "更改成功！"
   } catch (e) {
@@ -63,9 +67,19 @@ crud.post('/update', async (ctx, next) => {
   }
 })
 
-crud.post('/remove', async (ctx, next) => {
+crud.post('/deleteone', async (ctx, next) => {
   try {
-    await connectMongo.remove('user', ctx.request.body)
+    await connectMongo.deleteOne('user', ctx.request.body)
+    ctx.response.status = 200
+    ctx.response.body = '删除成功！'
+  } catch (e) {
+    ctx.response.body = e
+  }
+})
+
+crud.post('/deletemany', async (ctx, next) => {
+  try {
+    await connectMongo.deleteMany('user', ctx.request.body)
     ctx.response.status = 200
     ctx.response.body = '删除成功！'
   } catch (e) {
