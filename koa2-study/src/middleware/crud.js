@@ -5,15 +5,25 @@ const { ConnectMongo } = require('../utils/mongo')
 let connectMongo = new ConnectMongo()
 connectMongo.open()
 
-const data = {
-  id: 2,
-  name: '李四',
-  age: 21
-}
-
 crud.get('/', async (ctx, next) => {
+  let html = `
+    <form action="http://localhost:3009/crud/insert" method="GET" enctype="multipart/form-data">
+      姓名：<input type="text" name="name" />
+      <input type="submit" value="写入"/>
+    </form>
+    <form action="http://localhost:3009/crud/remove" method="POST" enctype="multipart/form-data">
+      姓名：<input type="text" name="name" />
+      <input type="submit" value="删除"/>
+    </form>
+  `
+  ctx.response.status = 200
+  ctx.response.body = html
+})
+
+crud.get('/insert', async (ctx, next) => {
   try {
-    await connectMongo.insert('user', data)
+    const { query } = ctx
+    await connectMongo.insert('user', query)
     ctx.response.status = 200
     ctx.response.body = '插入成功'
   } catch (e) {
