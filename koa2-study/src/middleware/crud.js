@@ -12,17 +12,23 @@ const data = {
 }
 
 crud.get('/', async (ctx, next) => {
-  connectMongo.insert('user', data)
-  ctx.response.status = 200
-  ctx.response.body = '插入成功'
-  await next()
+  try {
+    await connectMongo.insert('user', data)
+    ctx.response.status = 200
+    ctx.response.body = '插入成功'
+  } catch (e) {
+    ctx.response.body = e
+  }
 })
 
 crud.post('/remove', async (ctx, next) => {
-  connectMongo.remove('user', ctx.request.body)
-  ctx.response.status = 200
-  ctx.response.body = '删除成功！'
-  await next()
+  try {
+    await connectMongo.remove('user', ctx.request.body)
+    ctx.response.status = 200
+    ctx.response.body = '删除成功！'
+  } catch (e) {
+    ctx.response.body = e
+  }
 })
 
 module.exports = crud

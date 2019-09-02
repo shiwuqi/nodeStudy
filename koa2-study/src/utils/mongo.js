@@ -29,21 +29,22 @@ class ConnectMongo {
   /**
    * @description 插入单个数据
    * @param {string}table 表名 
-   * @param {any}data 要插入的数据
-   * @param {function}cb 回调函数 
+   * @param {any}data 要插入的数据 
    */
-  insert(table, data, cb) {
-    this.connect(table, function(err, result) {
-      if (err) {
-        throw err
-      } else {
-        result.insertOne(data, function(err, data) {
-          if (err) {
-            console.log('插入数据失败：' + err)
-          }
-          cb && cb(data)
-        })
-      }
+  insert(table, data) {
+    return new Promise((resolve, reject) => {
+      this.connect(table, function(err, result) {
+        if (err) {
+          throw err
+        } else {
+          result.insertOne(data, function(err, data) {
+            if (err) {
+              reject(err)
+            }
+            resolve(data)
+          })
+        }
+      })
     })
   }
 
@@ -51,20 +52,21 @@ class ConnectMongo {
    * @description 删除数据
    * @param {string}table 表名 
    * @param {any}data 要插入的数据
-   * @param {function}cb 回调函数
    */
-  remove(table, data, cb) {
-    this.connect(table, function(err, result) {
-      if (err) {
-        throw err
-      } else {
-        result.remove(data, function(err, data) {
-          if (err) {
-            console.log('删除数据失败：' + err)
-          }
-          cb && cb(data)
-        })
-      }
+  remove(table, data) {
+    return new Promise((resolve, reject) => {
+      this.connect(table, function(err, result) {
+        if (err) {
+          throw err
+        } else {
+          result.remove(data, function(err, data) {
+            if (err) {
+              reject(err)
+            }
+            resolve(data)
+          })
+        }
+      })
     })
   }
 }
