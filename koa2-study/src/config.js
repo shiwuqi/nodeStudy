@@ -1,4 +1,4 @@
-const MongoUrl = 'mongodb://127.0.0.1/test'
+const MongoUrl = 'mongodb://127.0.0.1:27017/test'
 
 module.exports = {
   MongoUrl,
