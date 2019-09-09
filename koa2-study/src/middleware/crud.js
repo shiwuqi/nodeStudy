@@ -3,7 +3,6 @@ const crud = new Router()
 const { ConnectMongo } = require('../utils/mongo')
 
 let connectMongo = new ConnectMongo()
-connectMongo.open()
 
 crud.get('/', async (ctx, next) => {
   let html = `

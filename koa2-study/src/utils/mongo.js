@@ -5,6 +5,7 @@ class ConnectMongo {
   constructor() {
     this.url = MongoUrl
     this.db
+    this.open()
   }
   open() { // 连接数据库
     const _this = this
@@ -29,7 +30,7 @@ class ConnectMongo {
   /**
    * @description 插入单个数据
    * @param {string}table 表名 
-   * @param {any}data 要插入的数据 
+   * @param {any}data 要插入的数据
    */
   insert(table, data) {
     return new Promise((resolve, reject) => {
