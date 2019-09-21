@@ -88,7 +88,7 @@ npm install -g pm2
 
 #### 3、配置nginx.conf
 
-![ngnix配置](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/pj-ngnix_conf.png)
+![ngnix配置](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/pj-nginx_conf.png)
 
 #### 4、启动项目
 
