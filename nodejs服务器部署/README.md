@@ -71,4 +71,27 @@ touch /usr/local/mongodb/logs
 
 ![成功](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-success.png)
 
+## 安装pm2
+------
+
+#### 全局安装pm2  
+
+npm install -g pm2  
+
+## 启动项目
+
+#### 1、项目放到opt目录下
+
+![项目](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/pj-result.png)
+
+#### 2、安装依赖 npm install
+
+#### 3、配置nginx.conf
+
+![ngnix配置](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/pj-ngnix_conf.png)
+
+#### 4、启动项目
+
+pm2 start index.js
+
   
