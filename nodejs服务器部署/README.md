@@ -1,7 +1,7 @@
-## 环境：腾讯云 CentOS 7.4 64位
-## 工具：Xshell
+# 环境：腾讯云 CentOS 7.4 64位
+# 工具：Xshell
 
-安装nodejs、npm
+## 安装nodejs、npm
 ------
 
 #### 1、nodejs下载  
