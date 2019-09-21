@@ -59,7 +59,7 @@ mv mongodb-linux-x86_64-3.4.16 /usr/local/mongodb
 mkdir /usr/local/mongodb/data  
 touch /usr/local/mongodb/logs
 
-![创建数据库文件夹与日志文件](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-data.jpg)
+![创建数据库文件夹与日志文件](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-data.png)
 
 ![结果](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-data-result.png)
 
