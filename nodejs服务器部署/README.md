@@ -16,7 +16,7 @@ tar -xvf node-v12.10.0-linux-x64.tar.xz
 
 ![解压](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/node-decompression.png)
 
-#### 3、更改文件名称  
+#### 3、重命名  
 
 mv node-v12.10.0-linux-x64 node  
 
@@ -30,5 +30,45 @@ node -v
 npm -v  
 
 ![设置全局变量](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/node-setting.jpg)
+
+
+
+## 安装mongodb
+------
+
+#### 1、mongodb安装
+
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.16.tgz
+
+![下载](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-download.png)
+
+#### 2、mongodb解压
+
+tar -xvf mongodb-linux-x86_64-3.4.16.tgz
+
+![解压](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-decompression.png)
+
+#### 3、移动文件
+
+mv mongodb-linux-x86_64-3.4.16 /usr/local/mongodb
+
+![移动](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-move.png)
+
+#### 4、创建数据库文件夹与日志文件
+
+mkdir /usr/local/mongodb/data  
+touch /usr/local/mongodb/logs
+
+![创建数据库文件夹与日志文件](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-data.jpg)
+
+![结果](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-data-result.png)
+
+#### 5、启动mongodb
+
+/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data --logpath=/usr/local/mongodb/logs --logappend --port=27017 --fork
+
+![结果](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-start.png)
+
+![成功](https://github.com/shiwuqi/nodeStudy/blob/master/nodejs%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/assets/images/mongodb-success.png)
 
   
